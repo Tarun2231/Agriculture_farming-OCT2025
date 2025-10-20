@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Agriculture_farming-OCT2025/static/css/main.f9953ffa.css",
-    "main.js": "/Agriculture_farming-OCT2025/static/js/main.e6d19a55.js",
+    "main.css": "/Agriculture_farming-OCT2025/static/css/main.578182a7.css",
+    "main.js": "/Agriculture_farming-OCT2025/static/js/main.9e4a8fb4.js",
     "index.html": "/Agriculture_farming-OCT2025/index.html",
-    "main.f9953ffa.css.map": "/Agriculture_farming-OCT2025/static/css/main.f9953ffa.css.map",
-    "main.e6d19a55.js.map": "/Agriculture_farming-OCT2025/static/js/main.e6d19a55.js.map"
+    "main.578182a7.css.map": "/Agriculture_farming-OCT2025/static/css/main.578182a7.css.map",
+    "main.9e4a8fb4.js.map": "/Agriculture_farming-OCT2025/static/js/main.9e4a8fb4.js.map"
   },
   "entrypoints": [
-    "static/css/main.f9953ffa.css",
-    "static/js/main.e6d19a55.js"
+    "static/css/main.578182a7.css",
+    "static/js/main.9e4a8fb4.js"
   ]
 }
