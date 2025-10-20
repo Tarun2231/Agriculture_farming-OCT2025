@@ -4,10 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { 
   Bird, 
   Fish, 
-  Wheat, 
   Bug, 
-  ShoppingCart, 
-  Microscope,
   ArrowRight,
   Leaf,
   Droplets,
