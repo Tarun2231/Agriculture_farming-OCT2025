@@ -1,0 +1,16 @@
+{
+  "short_name": "GreenLoop Farm",
+  "name": "GreenLoop Integrated Agro Farm",
+  "description": "Zero Waste • Maximum Yield • Sustainable Farming",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2d8f2d",
+  "background_color": "#ffffff"
+}
