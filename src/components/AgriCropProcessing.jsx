@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { 
   ArrowRight,
@@ -11,14 +11,11 @@ import {
   Wheat,
   Sprout,
   Bug,
-  Fish,
   Bird,
   TrendingUp,
   CheckCircle,
-  ArrowDown,
-  ArrowLeft,
-  ArrowUp,
-  Circle
+  Circle,
+  Hexagon
 } from 'lucide-react';
 
 const AgriCropProcessing = ({ isDarkMode }) => {
@@ -51,6 +48,7 @@ const AgriCropProcessing = ({ isDarkMode }) => {
       title: 'Peanut Farming & Processing',
       emoji: '🥜',
       description: 'Peanuts cultivated organically with zero waste processing',
+      image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop&q=80',
       features: [
         'Peanuts cultivated organically',
         'Oil extracted using cold press unit',
@@ -70,6 +68,7 @@ const AgriCropProcessing = ({ isDarkMode }) => {
       title: 'Maize Cultivation & Utilization',
       emoji: '🌽',
       description: 'Maize grown for grain sales and feedstock production',
+      image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop&q=80',
       features: [
         'Maize grown for both grain sales and feedstock',
         'Maize silage produced for poultry & goat feed',
@@ -89,6 +88,7 @@ const AgriCropProcessing = ({ isDarkMode }) => {
       title: 'Rice Farming & Resource Reuse',
       emoji: '🌾',
       description: 'Rice grown for sale with complete resource utilization',
+      image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=300&fit=crop&q=80',
       features: [
         'Rice grown for direct sale',
         'Rice husk used as poultry bedding for hygiene',
@@ -108,6 +108,7 @@ const AgriCropProcessing = ({ isDarkMode }) => {
       title: 'Mushroom Cultivation',
       emoji: '🍄',
       description: 'High-value mushroom farming using agricultural waste',
+      image: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=300&fit=crop&q=80',
       features: [
         'Uses rice straw, rice husk, and cow dung compost as substrate',
         'High-value, low-space crop cultivation',
@@ -127,6 +128,7 @@ const AgriCropProcessing = ({ isDarkMode }) => {
       title: 'Cow Dung Compost & Organic Inputs',
       emoji: '🐄',
       description: 'Organic fertilizer production from cow dung and waste',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop&q=80',
       features: [
         'Cow dung and waste composted to make organic fertilizer',
         'Used for mushroom composting and crop farming',
@@ -140,6 +142,26 @@ const AgriCropProcessing = ({ isDarkMode }) => {
       borderColor: 'border-brown-200 dark:border-brown-800',
       iconBg: 'bg-brown-500',
       outputs: ['Organic Compost', 'Soil Enrichment']
+    },
+    {
+      icon: <Hexagon className="w-8 h-8 text-white" />,
+      title: 'Honey Bee Pollination Division',
+      emoji: '🐝',
+      description: 'Honey bee farming for pollination and honey production',
+      image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=300&fit=crop&q=80',
+      features: [
+        'Honey bee colonies for natural crop pollination',
+        'Organic honey production from farm flowers',
+        'Improved crop yields through natural pollination',
+        'Beeswax and other bee products for additional income',
+        'Sustainable pollination supporting all farm crops'
+      ],
+      primaryColor: 'bg-yellow-600',
+      secondaryColor: 'bg-yellow-100',
+      bgColor: 'bg-yellow-50 dark:bg-yellow-900/20',
+      borderColor: 'border-yellow-200 dark:border-yellow-800',
+      iconBg: 'bg-yellow-600',
+      outputs: ['Organic Honey', 'Beeswax', 'Enhanced Pollination']
     }
   ];
 
@@ -199,6 +221,13 @@ const AgriCropProcessing = ({ isDarkMode }) => {
       icon: <Leaf className="w-6 h-6" />,
       color: 'bg-green-600',
       outputs: ['Nutrient-Rich Soil']
+    },
+    {
+      id: 9,
+      title: 'Honey Bee Pollination',
+      icon: <Hexagon className="w-6 h-6" />,
+      color: 'bg-yellow-600',
+      outputs: ['Organic Honey', 'Beeswax', 'Enhanced Pollination']
     }
   ];
 
@@ -236,27 +265,37 @@ const AgriCropProcessing = ({ isDarkMode }) => {
                 className="group"
               >
                 <Card className={`h-full card-hover ${crop.borderColor} ${crop.bgColor} overflow-hidden`}>
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-between mb-4">
+                  {/* Image Header */}
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={crop.image}
+                      alt={crop.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className={`absolute inset-0 bg-gradient-to-r ${crop.primaryColor}/20 to-transparent opacity-50`} />
+                    <div className="absolute top-4 right-4 flex space-x-2">
                       {/* Primary Icon with colored circular background */}
                       <motion.div
                         whileHover={{ scale: 1.1, rotate: 5 }}
-                        className={`inline-flex items-center justify-center w-16 h-16 rounded-full ${crop.iconBg} shadow-lg`}
+                        className={`inline-flex items-center justify-center w-12 h-12 rounded-full ${crop.iconBg} shadow-lg`}
                       >
                         {crop.icon}
                       </motion.div>
                       {/* Secondary Icon */}
                       <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg ${crop.secondaryColor} shadow-sm`}>
-                        <span className="text-2xl">{crop.emoji}</span>
+                        <span className="text-xl">{crop.emoji}</span>
                       </div>
                     </div>
-                    
-                    <CardTitle className="text-xl font-bold text-foreground group-hover:text-eco-green-600 transition-colors">
-                      {crop.title}
-                    </CardTitle>
-                  </CardHeader>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <CardTitle className="text-xl font-bold text-white group-hover:text-eco-green-200 transition-colors">
+                        {crop.title}
+                      </CardTitle>
+                    </div>
+                  </div>
                   
-                  <CardContent className="pt-0">
+                  <CardContent className="pt-0 p-6">
                     <p className="text-muted-foreground mb-4 leading-relaxed">
                       {crop.description}
                     </p>
@@ -302,8 +341,9 @@ const AgriCropProcessing = ({ isDarkMode }) => {
             </div>
 
             {/* Flow Diagram */}
-            <div className="bg-gradient-to-br from-eco-green-50 to-eco-green-100 dark:from-eco-green-900/20 dark:to-eco-green-800/20 rounded-2xl p-8 lg:p-12">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <div className="bg-gradient-to-br from-eco-green-50 to-eco-green-100 dark:from-eco-green-900/20 dark:to-eco-green-800/20 rounded-2xl p-6 lg:p-12">
+              <div className="max-w-6xl mx-auto">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                 {flowSteps.map((step, index) => (
                   <motion.div
                     key={step.id}
@@ -313,29 +353,32 @@ const AgriCropProcessing = ({ isDarkMode }) => {
                   >
                     {/* Flow Arrow */}
                     {index < flowSteps.length - 1 && (
-                      <div className="hidden lg:block absolute top-8 -right-4 z-10">
-                        <ArrowRight className="w-6 h-6 text-eco-green-500" />
+                      <div className="hidden lg:block absolute top-8 -right-3 z-10">
+                        <ArrowRight className="w-5 h-5 text-eco-green-500" />
                       </div>
                     )}
                     
                     {/* Step Card */}
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full ${step.color} text-white shadow-lg mb-4`}>
-                      {step.icon}
-                    </div>
-                    
-                    <h4 className="text-sm lg:text-base font-semibold text-foreground mb-2">
-                      {step.title}
-                    </h4>
-                    
-                    <div className="space-y-1">
-                      {step.outputs.map((output, idx) => (
-                        <div key={idx} className="text-xs text-muted-foreground bg-white/50 dark:bg-black/20 rounded px-2 py-1">
-                          {output}
-                        </div>
-                      ))}
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
+                      <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full ${step.color} text-white shadow-lg mb-3 mx-auto`}>
+                        {step.icon}
+                      </div>
+                      
+                      <h4 className="text-sm lg:text-base font-semibold text-foreground mb-3 leading-tight text-center flex-grow">
+                        {step.title}
+                      </h4>
+                      
+                      <div className="space-y-1 mt-auto">
+                        {step.outputs.map((output, idx) => (
+                          <div key={idx} className="text-xs text-muted-foreground bg-eco-green-50 dark:bg-eco-green-900/20 rounded px-2 py-1 text-center">
+                            {output}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 ))}
+                </div>
               </div>
 
               {/* Circular Flow Indicator */}

@@ -13,6 +13,11 @@ import {
   Sprout,
   Utensils,
   Beaker,
+  Wheat,
+  Circle,
+  Recycle,
+  Hexagon,
+  ExternalLink,
 } from 'lucide-react';
 
 const Divisions = ({ isDarkMode }) => {
@@ -141,6 +146,114 @@ const Divisions = ({ isDarkMode }) => {
       bgColor: 'bg-indigo-50 dark:bg-indigo-900/20',
       borderColor: 'border-indigo-200 dark:border-indigo-800',
       iconBg: 'bg-indigo-500'
+    },
+    {
+      icon: <Sprout className="w-8 h-8 text-white" />,
+      title: 'Peanut Farming & Processing Division',
+      emoji: '🥜',
+      description: 'Peanuts cultivated organically with zero waste processing',
+      features: [
+        'Peanuts cultivated organically',
+        'Oil extracted using cold press unit',
+        'Peanut oil sold directly (farm-to-market)',
+        'Peanut cake reused as high-protein animal feed',
+        'Zero waste: every output is used as either product or feed'
+      ],
+      primaryColor: 'bg-orange-600',
+      secondaryColor: 'bg-orange-100',
+      bgColor: 'bg-orange-50 dark:bg-orange-900/20',
+      borderColor: 'border-orange-200 dark:border-orange-800',
+      iconBg: 'bg-orange-600'
+    },
+    {
+      icon: <Wheat className="w-8 h-8 text-white" />,
+      title: 'Maize Cultivation & Utilization Division',
+      emoji: '🌽',
+      description: 'Maize grown for grain sales and feedstock production',
+      features: [
+        'Maize grown for both grain sales and feedstock',
+        'Maize silage produced for poultry & goat feed',
+        'Grain maize sold in market for revenue',
+        'Stalks and leftover plant matter reused for BSF feed',
+        'Complete utilization of all plant parts'
+      ],
+      primaryColor: 'bg-yellow-600',
+      secondaryColor: 'bg-yellow-100',
+      bgColor: 'bg-yellow-50 dark:bg-yellow-900/20',
+      borderColor: 'border-yellow-200 dark:border-yellow-800',
+      iconBg: 'bg-yellow-600'
+    },
+    {
+      icon: <Circle className="w-8 h-8 text-white" />,
+      title: 'Rice Farming & Resource Reuse Division',
+      emoji: '🌾',
+      description: 'Rice grown for sale with complete resource utilization',
+      features: [
+        'Rice grown for direct sale',
+        'Rice husk used as poultry bedding for hygiene',
+        'Rice straw collected for mushroom cultivation',
+        'Reduces waste and adds income stream',
+        'Complete plant utilization cycle'
+      ],
+      primaryColor: 'bg-green-600',
+      secondaryColor: 'bg-green-100',
+      bgColor: 'bg-green-50 dark:bg-green-900/20',
+      borderColor: 'border-green-200 dark:border-green-800',
+      iconBg: 'bg-green-600'
+    },
+    {
+      icon: <Bug className="w-8 h-8 text-white" />,
+      title: 'Mushroom Cultivation Division',
+      emoji: '🍄',
+      description: 'High-value mushroom farming using agricultural waste',
+      features: [
+        'Uses rice straw, rice husk, and cow dung compost as substrate',
+        'High-value, low-space crop cultivation',
+        'Mushrooms sold fresh to restaurants and markets',
+        'After harvest, spent compost reused as organic fertilizer',
+        'Complete waste-to-value conversion'
+      ],
+      primaryColor: 'bg-purple-600',
+      secondaryColor: 'bg-purple-100',
+      bgColor: 'bg-purple-50 dark:bg-purple-900/20',
+      borderColor: 'border-purple-200 dark:border-purple-800',
+      iconBg: 'bg-purple-600'
+    },
+    {
+      icon: <Recycle className="w-8 h-8 text-white" />,
+      title: 'Cow Dung Compost & Organic Inputs Division',
+      emoji: '🐄',
+      description: 'Organic fertilizer production from cow dung and waste',
+      features: [
+        'Cow dung and waste composted to make organic fertilizer',
+        'Used for mushroom composting and crop farming',
+        'Reduces chemical input and supports organic cycle',
+        'Soil enrichment and natural nutrient cycling',
+        'Complete organic farming support'
+      ],
+      primaryColor: 'bg-brown-600',
+      secondaryColor: 'bg-brown-100',
+      bgColor: 'bg-brown-50 dark:bg-brown-900/20',
+      borderColor: 'border-brown-200 dark:border-brown-800',
+      iconBg: 'bg-brown-600'
+    },
+    {
+      icon: <Hexagon className="w-8 h-8 text-white" />,
+      title: 'Honey Bee Pollination Division',
+      emoji: '🐝',
+      description: 'Honey bee farming for pollination and honey production',
+      features: [
+        'Honey bee colonies for natural crop pollination',
+        'Organic honey production from farm flowers',
+        'Improved crop yields through natural pollination',
+        'Beeswax and other bee products for additional income',
+        'Sustainable pollination supporting all farm crops'
+      ],
+      primaryColor: 'bg-yellow-700',
+      secondaryColor: 'bg-yellow-100',
+      bgColor: 'bg-yellow-50 dark:bg-yellow-900/20',
+      borderColor: 'border-yellow-200 dark:border-yellow-800',
+      iconBg: 'bg-yellow-700'
     }
   ];
 
@@ -163,7 +276,7 @@ const Divisions = ({ isDarkMode }) => {
               Our <span className="text-eco-green-500">Divisions</span>
             </h2>
             <p className="text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Six integrated divisions working together to create a sustainable, 
+              Twelve integrated divisions working together to create a comprehensive sustainable, 
               zero-waste farming ecosystem that maximizes yield and minimizes environmental impact.
             </p>
           </motion.div>
@@ -175,7 +288,16 @@ const Divisions = ({ isDarkMode }) => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
-                className="group"
+                className="group cursor-pointer"
+                onClick={() => {
+                  const divisionIds = [
+                    'poultry-livestock', 'aquaculture', 'agriculture-feedstock', 'bsf-production',
+                    'food-retail', 'rd-sustainability', 'peanut-farming', 'maize-cultivation',
+                    'rice-farming', 'mushroom-cultivation', 'cow-dung-compost', 'honey-bee-pollination'
+                  ];
+                  const divisionId = divisionIds[index];
+                  window.open(`/division/${divisionId}`, '_blank');
+                }}
               >
                 <Card className={`h-full card-hover ${division.borderColor} ${division.bgColor} overflow-hidden`}>
                   <CardHeader className="pb-4">
@@ -203,14 +325,26 @@ const Divisions = ({ isDarkMode }) => {
                       {division.description}
                     </p>
                     
-                    <ul className="space-y-2">
-                      {division.features.map((feature, featureIndex) => (
+                    <ul className="space-y-2 mb-4">
+                      {division.features.slice(0, 3).map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-start space-x-2 text-sm text-muted-foreground">
                           <ArrowRight className="w-4 h-4 text-eco-green-500 mt-0.5 flex-shrink-0" />
                           <span>{feature}</span>
                         </li>
                       ))}
+                      {division.features.length > 3 && (
+                        <li className="text-sm text-eco-green-500 font-medium">
+                          +{division.features.length - 3} more features...
+                        </li>
+                      )}
                     </ul>
+                    
+                    <div className="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-gray-700">
+                      <span className="text-sm font-medium text-eco-green-600 group-hover:text-eco-green-700">
+                        Click for details
+                      </span>
+                      <ExternalLink className="w-4 h-4 text-eco-green-500 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>

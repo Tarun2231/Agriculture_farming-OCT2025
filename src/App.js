@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Divisions from './components/Divisions';
-import AgriCropProcessing from './components/AgriCropProcessing';
-import IntegrationCycle from './components/IntegrationCycle';
-import IncomeStreams from './components/IncomeStreams';
-import BusinessVision from './components/BusinessVision';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
+import DivisionsPage from './pages/DivisionsPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -46,20 +41,20 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
-      <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <main>
-        <Hero isDarkMode={isDarkMode} />
-        <About isDarkMode={isDarkMode} />
-        <Divisions isDarkMode={isDarkMode} />
-        <AgriCropProcessing isDarkMode={isDarkMode} />
-        <IntegrationCycle isDarkMode={isDarkMode} />
-        <IncomeStreams isDarkMode={isDarkMode} />
-        <BusinessVision isDarkMode={isDarkMode} />
-        <Contact isDarkMode={isDarkMode} />
-      </main>
-      <Footer isDarkMode={isDarkMode} />
-    </div>
+    <Router basename="/Agriculture_farming-OCT2025">
+      <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+              <HomePage isDarkMode={isDarkMode} />
+              <Footer isDarkMode={isDarkMode} />
+            </>
+          } />
+          <Route path="/divisions" element={<DivisionsPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

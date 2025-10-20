@@ -3,10 +3,13 @@ import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Switch } from './ui/switch';
 import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header = ({ isDarkMode, toggleDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,8 +20,8 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Divisions', href: '#divisions' },
+    { name: 'Home', href: '/', isExternal: true },
+    { name: 'Divisions', href: '/divisions', isExternal: true },
     { name: 'Agri Processing', href: '#agri-crop-processing' },
     { name: 'Integration Cycle', href: '#integration-cycle' },
     { name: 'Products & Retail', href: '#products' },
@@ -27,10 +30,33 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const scrollToSection = (href, isExternal = false) => {
+    if (isExternal) {
+      if (href === '/') {
+        // Navigate to homepage
+        navigate('/');
+      } else if (href === '/divisions') {
+        // Navigate to divisions page
+        navigate('/divisions');
+      }
+    } else {
+      // If we're not on the homepage, navigate to homepage first, then scroll
+      if (location.pathname !== '/') {
+        navigate('/');
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // We're already on homepage, just scroll
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
     setIsMenuOpen(false);
   };
@@ -68,17 +94,17 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.name}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection(item.href)}
-                className="text-sm font-medium text-white hover:text-eco-green-200 transition-colors duration-200"
-              >
-                {item.name}
-              </motion.button>
-            ))}
+                 {navItems.map((item) => (
+                   <motion.button
+                     key={item.name}
+                     whileHover={{ scale: 1.05 }}
+                     whileTap={{ scale: 0.95 }}
+                     onClick={() => scrollToSection(item.href, item.isExternal)}
+                     className="text-sm font-medium text-white hover:text-eco-green-200 transition-colors duration-200"
+                   >
+                     {item.name}
+                   </motion.button>
+                 ))}
           </nav>
 
           {/* Dark Mode Toggle & Mobile Menu Button */}
@@ -114,17 +140,17 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
           className="lg:hidden overflow-hidden"
         >
           <div className="py-4 space-y-2">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.name}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-4 py-2 text-sm font-medium text-white hover:text-eco-green-200 hover:bg-white/10 rounded-md transition-colors duration-200"
-              >
-                {item.name}
-              </motion.button>
-            ))}
+                 {navItems.map((item) => (
+                   <motion.button
+                     key={item.name}
+                     whileHover={{ scale: 1.02 }}
+                     whileTap={{ scale: 0.98 }}
+                     onClick={() => scrollToSection(item.href, item.isExternal)}
+                     className="block w-full text-left px-4 py-2 text-sm font-medium text-white hover:text-eco-green-200 hover:bg-white/10 rounded-md transition-colors duration-200"
+                   >
+                     {item.name}
+                   </motion.button>
+                 ))}
           </div>
         </motion.div>
       </div>

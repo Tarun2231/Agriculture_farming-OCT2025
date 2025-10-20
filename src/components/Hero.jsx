@@ -31,8 +31,15 @@ const Hero = ({ isDarkMode }) => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div className={`absolute inset-0 ${isDarkMode ? 'eco-gradient-dark' : 'eco-gradient'} opacity-90`} />
-        <div className="absolute inset-0 bg-black/20" />
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1920&h=1080&fit=crop&q=80')`
+          }}
+        />
+        <div className={`absolute inset-0 ${isDarkMode ? 'eco-gradient-dark' : 'eco-gradient'} opacity-80`} />
+        <div className="absolute inset-0 bg-black/30" />
         
         {/* Animated background elements */}
         <motion.div

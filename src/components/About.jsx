@@ -78,15 +78,23 @@ const About = ({ isDarkMode }) => {
               className="relative"
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <div className={`aspect-[4/3] ${isDarkMode ? 'eco-gradient-dark' : 'eco-gradient'} flex items-center justify-center`}>
-                  <div className="text-center text-white p-8">
-                    <div className="w-24 h-24 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center">
-                      <Leaf className="w-12 h-12" />
+                <div 
+                  className="aspect-[4/3] bg-cover bg-center bg-no-repeat relative"
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&h=600&fit=crop&q=80')`
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 flex items-end justify-center p-8">
+                    <div className="text-center text-white">
+                      <div className="w-24 h-24 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <Leaf className="w-12 h-12" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-4">Integrated Farm Ecosystem</h3>
+                      <p className="text-white/90">
+                        A visual representation of our interconnected farming systems
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-bold mb-4">Integrated Farm Ecosystem</h3>
-                    <p className="text-white/90">
-                      A visual representation of our interconnected farming systems
-                    </p>
                   </div>
                 </div>
                 
