@@ -19,6 +19,7 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'Divisions', href: '#divisions' },
+    { name: 'Agri Processing', href: '#agri-crop-processing' },
     { name: 'Integration Cycle', href: '#integration-cycle' },
     { name: 'Products & Retail', href: '#products' },
     { name: 'Income Streams', href: '#income-streams' },

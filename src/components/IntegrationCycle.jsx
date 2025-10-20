@@ -12,7 +12,9 @@ import {
   Bug,
   Fish,
   Wheat,
-  Bird
+  Bird,
+  Sprout,
+  Circle
 } from 'lucide-react';
 
 const IntegrationCycle = ({ isDarkMode }) => {
@@ -69,10 +71,38 @@ const IntegrationCycle = ({ isDarkMode }) => {
       nextArrow: 'right'
     },
     {
+      icon: <Sprout className="w-6 h-6" />,
+      title: 'Peanut Oil Cake',
+      description: 'High-protein animal feed',
+      color: 'bg-orange-600',
+      nextArrow: 'right'
+    },
+    {
+      icon: <Wheat className="w-6 h-6" />,
+      title: 'Maize Silage',
+      description: 'Poultry & goat feed',
+      color: 'bg-yellow-600',
+      nextArrow: 'right'
+    },
+    {
+      icon: <Circle className="w-6 h-6" />,
+      title: 'Rice Husk Bedding',
+      description: 'Poultry hygiene improvement',
+      color: 'bg-green-600',
+      nextArrow: 'right'
+    },
+    {
+      icon: <Bug className="w-6 h-6" />,
+      title: 'Mushroom Substrate',
+      description: 'Rice straw cultivation',
+      color: 'bg-purple-500',
+      nextArrow: 'right'
+    },
+    {
       icon: <Bug className="w-6 h-6" />,
       title: 'BSF Production',
       description: 'High-protein feed source',
-      color: 'bg-purple-500',
+      color: 'bg-purple-600',
       nextArrow: 'right'
     },
     {
